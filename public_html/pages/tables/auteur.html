@@ -28,7 +28,7 @@
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>A</b>LT</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>MBDS</b> Luchard</span>
+                    <span class="logo-lg"><b>MBDS</b> LuSyMax</span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -79,7 +79,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="../../pages/tables/index.html"><i class="fa fa-home"></i> Home</a></li>
-                                <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                              
                             </ul>
                         </li>
 
@@ -154,8 +154,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Simple</li>
+        <li><a href="#">Auteurs</a></li>
+        <li class="active">Liste  Auteur</li>
       </ol>
     </section>
 
@@ -184,7 +184,9 @@
                 <tr>  
                     <th>Id</th>  
                     <th>Nom</th>  
-                    <th>Prénom</th> 
+                    <th>Prénom</th>
+                    <th>Sexe</th>
+                    <th>Email</th>
                     <th>Type</th>
                     <th>Action</th>
                 </tr>  
@@ -199,13 +201,18 @@
                          <td>  
                             <input data-bind='value: prenom'/></input>
                         </td>  
-                        
+                         <td>  
+                            <input data-bind='value: sexe'/></input>
+                        </td>  
+                         <td>  
+                            <input data-bind='value: email'/></input>
+                        </td>  
                         <td>  
                             <label data-bind='text: type'/></label>
                         </td>  
                         <td>
                             
-                            <button data-bind="click:$parent.update">Modifier</button>
+                            <button data-bind="click:$parent.modifier">Modifier</button>
                             <button data-bind="click:$parent.remove">Supprimer</button>
                             
                         </td>
@@ -443,7 +450,7 @@
   
   <script>
           $(function(){
-              getData();
+              getDataAuteur();
           });  
         </script>
 </body>

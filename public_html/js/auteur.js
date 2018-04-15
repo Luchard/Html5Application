@@ -9,8 +9,11 @@ var Autheur = function (author) {
     this.id = ko.observable(author.id);
     this.nom = ko.observable(author.nom);
     this.prenom = ko.observable(author.prenom);
-   this.type = ko.observable(author.type);
-   this.datenaissance = ko.observable(author.dateDenaissance);
+    this.sexe = ko.observable(author.sexe);
+    this.email = ko.observable(author.email);
+    this.photo = ko.observable(author.photo);
+    this.type = ko.observable(author.type);
+    this.datenaissance = ko.observable(author.dateDenaissance);
 };
 
 
@@ -24,8 +27,8 @@ var ViewModel = function (auteurs) {
     self.auteurs = ko.observableArray(ko.utils.arrayMap(auteurs, function (author) {
         return new Autheur(author);
     }));
-    
-    self.remove = function(author){
+
+    self.remove = function (author) {
         self.auteurs.remove(author);
         $.ajax({
             url: "http://localhost:8080/bibliotheque_ntdp-master/webresources/fr.unice.miage.ntdp.bibliotheque.auteur/" + author.id(),
@@ -35,18 +38,18 @@ var ViewModel = function (auteurs) {
                 Accept: "application/json",
                 success: (function (data, status, jq) {
                     // alert(status);  
-                   getData();
+                    getData();
                 })
             }
         });
-        
+
     };
-    
-        self.initWithEmptyAuthor = function () {
+
+    self.initWithEmptyAuthor = function () {
         self.author = new Autheur({});
     };
-    
-        self.update = function (author) {
+
+    self.modifier = function (author) {
         $.ajax({
             url: "http://localhost:8080/bibliotheque_ntdp-master/webresources/fr.unice.miage.ntdp.bibliotheque.auteur/" + author.id(),
             type: "PUT",
@@ -61,8 +64,9 @@ var ViewModel = function (auteurs) {
             })
         });
     };
-    
-        self.cree = function () {
+
+
+    self.cree = function () {
         //   console.log(ko.toJSON(self.category, null, 2));
         var cat = ko.toJSON(self.author, null, 2);
         delete cat.id;
@@ -89,10 +93,10 @@ var newAuthor = function () {
     var viewModel = new ViewModel();
     viewModel.initWithEmptyAuthor();
     ko.applyBindings(viewModel);
-    
+
 };
 
-var getData = function () {
+var getDataAuteur = function () {
     $.ajax({
         url: "http://localhost:8080/bibliotheque_ntdp-master/webresources/fr.unice.miage.ntdp.bibliotheque.auteur",
         type: "GET",

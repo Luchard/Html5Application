@@ -85,7 +85,7 @@ var newLivre = function() {
 
 };
 
-var getData = function() {
+var getDataLivre = function() {
 
     $.ajax({
         url: "http://localhost:8080/bibliotheque_ntdp-master/webresources/fr.unice.miage.ntdp.bibliotheque.livre",
